@@ -1,0 +1,16 @@
+#!/bin/bash
+OPTION=$1
+POOL=$2
+
+case "$1" in
+	compressratio)
+		IN=`zfs get compressratio $POOL | grep compressratio`
+		echo ${IN:19:6}
+		;;
+	state)
+                IN=`zpool status $POOL | grep state`
+		echo ${IN:7:7}
+                ;;
+	*)
+		exit 1
+esac

@@ -1,0 +1,5 @@
+#!/bin/bash
+DRIVE=$1
+IN=`smartctl -a $DRIVE | grep Media`
+
+echo ${IN:43:3}
